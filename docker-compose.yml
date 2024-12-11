@@ -1,0 +1,12 @@
+services:
+  database:
+    image: 
+  server:
+    container_name: serve
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 5000:5000
+    depends_on:
+      -
