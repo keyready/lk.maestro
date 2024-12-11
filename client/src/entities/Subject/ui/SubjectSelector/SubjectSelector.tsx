@@ -45,7 +45,7 @@ export const SubjectSelector = memo((props: SubjectSelectorProps) => {
     return (
         <Dropdown
             classNames={{
-                trigger: 'w-full',
+                trigger: `w-full ${className}`,
             }}
         >
             <DropdownTrigger>

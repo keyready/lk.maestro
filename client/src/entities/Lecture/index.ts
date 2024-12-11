@@ -7,5 +7,7 @@ export {
     getLectureIsLoading,
     getLectureError,
 } from './model/selectors/LectureSelectors';
+export { createLecture } from './model/services/createLecture';
 
 export { LecturesList } from './ui/LecturesList/LecturesList';
+export { CreateLectureModal } from './ui/CreateLectureModal/CreateLectureModal';

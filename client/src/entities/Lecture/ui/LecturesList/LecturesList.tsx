@@ -12,12 +12,13 @@ import { RoutePath } from '@/shared/config/routeConfig';
 interface LecturesListProps {
     className?: string;
     cutUnder?: number;
+    subjectId?: number;
 }
 
 export const LecturesList = (props: LecturesListProps) => {
-    const { className, cutUnder } = props;
+    const { className, cutUnder, subjectId } = props;
 
-    const { data: lectures, isLoading } = useLectures();
+    const { data: lectures, isLoading } = useLectures(subjectId);
 
     const navigate = useNavigate();
 
@@ -33,10 +34,12 @@ export const LecturesList = (props: LecturesListProps) => {
         return (
             <VStack maxW gap="0" className="mt-4">
                 <h1 className="italic leading-none text-danger">Вы пока ничего не добавили</h1>
-                <p>
-                    Добавить лекции можно{' '}
-                    <TextButton onClick={handleAllLecturesCLick}>здесь</TextButton>
-                </p>
+                {cutUnder && (
+                    <p>
+                        Добавить лекции можно{' '}
+                        <TextButton onClick={handleAllLecturesCLick}>здесь</TextButton>
+                    </p>
+                )}
             </VStack>
         );
     }

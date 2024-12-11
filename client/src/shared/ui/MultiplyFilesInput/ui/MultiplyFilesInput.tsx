@@ -1,5 +1,5 @@
 import { ChangeEvent, useCallback, useMemo } from 'react';
-import { RiFileImageLine, RiFileVideoLine } from '@remixicon/react';
+import { RiFileLine } from '@remixicon/react';
 
 import classes from './MultiplyFilesInput.module.scss';
 
@@ -53,26 +53,13 @@ export const MultiplyFilesInput = (props: MultiplyFilesInputProps) => {
             )}
         >
             {files.length ? (
-                <VStack maxW align="center">
+                <VStack gap="0" maxW align="center">
                     <HStack justify="center" maxW className="flex-wrap">
-                        {files.slice(0, 10).map((file, index) => {
-                            if (file.type.includes('image')) {
-                                return (
-                                    <RiFileImageLine
-                                        size={48}
-                                        className="text-zinc-400"
-                                        key={index}
-                                    />
-                                );
-                            }
-
-                            return (
-                                <RiFileVideoLine size={48} className="text-zinc-400" key={index} />
-                            );
-                        })}
-                        {files.length > 10 ? <p className="text-2xl text-zinc-400">...</p> : null}
+                        {files.slice(0, 10).map((file, index) => (
+                            <RiFileLine size={16} className="text-zinc-400" key={index} />
+                        ))}
                     </HStack>
-                    <p className="text-zinc-400">Размер вложений: {calculateFileSize}</p>
+                    <p className="text-zinc-400 text-s">Размер вложений: {calculateFileSize}</p>
                 </VStack>
             ) : (
                 <h1 className="text-zinc-400">
