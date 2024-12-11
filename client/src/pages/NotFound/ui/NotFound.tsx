@@ -16,10 +16,8 @@ export const NotFound = ({ className }: NotFoundProps) => (
     <Page className={classNames(classes.page, {}, [className])}>
         <VStack maxH align="center" justify="center" maxW gap="8px">
             <VStack gap="12px" align="center" className={classes.NotFound}>
-                <h1 className="text-white text-2xl text-center font-bold">
-                    Запрашиваемый ресурс не найден
-                </h1>
-                <AppLink className="text-white text-l" to={RoutePath.main}>
+                <h1 className="text-2xl text-center font-bold">Запрашиваемый ресурс не найден</h1>
+                <AppLink className="text-l" to={RoutePath.main}>
                     Вернитесь на главную страницу
                 </AppLink>
             </VStack>

@@ -4,6 +4,9 @@ import { MainPage } from '@/pages/MainPage';
 import { NotFound } from '@/pages/NotFound';
 import { UserRoles } from '@/entities/User';
 import { AuthPage } from '@/pages/AuthPage';
+import { LkPage } from '@/pages/LkPage';
+import { LecturesPage } from '@/pages/LecturesPage';
+import { DefinitionsPage } from '@/pages/DefinitionsPage';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
@@ -12,6 +15,10 @@ export type AppRoutesProps = RouteProps & {
 
 export enum AppRoutes {
     MAIN = 'main',
+    LK = 'lk',
+    DEFINITIONS = 'definitions',
+    LECTURES = 'lectures',
+
     AUTH = 'auth',
 
     // last
@@ -21,17 +28,36 @@ export enum AppRoutes {
 export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.MAIN]: '/',
     [AppRoutes.AUTH]: '/welcome',
+    [AppRoutes.LK]: '/lk',
+    [AppRoutes.DEFINITIONS]: '/definitions',
+    [AppRoutes.LECTURES]: '/lectures',
 
     // last
-    [AppRoutes.NOT_FOUND]: '*',
+    [AppRoutes.NOT_FOUND]: '/*',
 };
 
 export const routerConfig: Record<AppRoutes, AppRoutesProps> = {
-    // авторизация
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
         element: <MainPage />,
+        // authOnly: true,
     },
+    [AppRoutes.LK]: {
+        path: RoutePath.lk,
+        element: <LkPage />,
+        // authOnly: true,
+    },
+    [AppRoutes.LECTURES]: {
+        path: RoutePath.lectures,
+        element: <LecturesPage />,
+        // authOnly: true,
+    },
+    [AppRoutes.DEFINITIONS]: {
+        path: RoutePath.definitions,
+        element: <DefinitionsPage />,
+        // authOnly: true,
+    },
+
     [AppRoutes.AUTH]: {
         path: RoutePath.auth,
         element: <AuthPage />,

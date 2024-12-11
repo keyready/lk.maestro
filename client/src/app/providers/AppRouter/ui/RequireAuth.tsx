@@ -25,7 +25,7 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
     // }
 
     if (!userData) {
-        return <Navigate to={RoutePath.main} state={{ from: currentLocation }} replace />;
+        return <Navigate to={RoutePath.auth} state={{ from: currentLocation }} replace />;
     }
 
     return children;

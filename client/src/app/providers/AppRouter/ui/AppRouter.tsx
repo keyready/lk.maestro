@@ -2,7 +2,7 @@ import React, { Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { AppRoutesProps, routerConfig } from '@/shared/config/routeConfig';
-import { PageLoader } from '@/shared/ui/PageLoader/ui/PageLoader';
+import { PageLoader } from '@/shared/ui/PageLoader';
 import { RequireAuth } from '@/app/providers/AppRouter/ui/RequireAuth';
 
 const AppRouter = () => {
@@ -13,7 +13,7 @@ const AppRouter = () => {
                 key={route.path}
                 path={route.path}
                 element={
-                    route.authOnly || route.desktopOnly ? (
+                    route.authOnly ? (
                         <RequireAuth roles={route.roles}>{element}</RequireAuth>
                     ) : (
                         element
