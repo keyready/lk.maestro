@@ -10,13 +10,12 @@ RUN go mod download && \
 
 COPY . .
 
-RUN go build -ldflags="-s -w" -o /build/main ./cmd/main.go
+RUN go build -ldflags="-s -w" -o /build/main ./cmd/app/main.go
 
 FROM alpine AS prod
 
 WORKDIR /app
 
 COPY --from=builder /build/main /app/main
-COPY --from=builder /build/static /app/static
 
 CMD ["/app/main"]

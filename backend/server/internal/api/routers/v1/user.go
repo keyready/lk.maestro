@@ -6,7 +6,7 @@ import (
 )
 
 func NewUserRouters(r *gin.Engine, uc *controllers.UserControllers) {
-	userRouters := r.Group("/api/user")
+	userRouters := r.Group("/api/auth")
 
 	userRouters.GET("/login", uc.Login)
 }

@@ -19,5 +19,20 @@ func AppHandlers(db *db.Database) *gin.Engine {
 	uc := controllers.NewUserControllers(us)
 	v1.NewUserRouters(r, uc)
 
+	lr := repostiory.NewLectureRepository(db)
+	ls := usecase.NewLectureUsecase(lr)
+	lc := controllers.NewLectureController(ls)
+	v1.NewLectureRouters(r, lc)
+
+	sr := repostiory.NewSentenceRepository(db)
+	su := usecase.NewSentenceUsecase(sr)
+	sc := controllers.NewSentenceControllers(su)
+	v1.NewSentencesRouters(r, sc)
+
+	sbjr := repostiory.NewSubjectRepository(db)
+	sbju := usecase.NewSubjectUsecase(sbjr)
+	sbjc := controllers.NewSubjectControllers(sbju)
+	v1.NewSubjectRouters(r, sbjc)
+
 	return r
 }

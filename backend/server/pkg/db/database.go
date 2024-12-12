@@ -3,6 +3,7 @@ package db
 import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	_ "github.com/lib/pq"
 	"log"
 	"sync"
 )
@@ -18,7 +19,7 @@ var (
 
 func GetDatabaseInstance() *Database {
 	once.Do(func() {
-		connString := "user = k0fanov36 password = k0fanov36 dbname = yakuninapp sslmode = disable host = db port = 5432"
+		connString := "user = k0fanov36 password = k0fanov36 dbname = yakuninapp sslmode = disable host = database port = 5432"
 		db, err := sqlx.Open("postgres", connString)
 		if err != nil {
 			log.Fatalf("Ошибка подключения к БД: %v", err.Error())
