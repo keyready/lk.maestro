@@ -1,10 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"log"
 	"net/http"
-	"os"
 	"server/internal/api/routers"
 	"server/pkg/db"
 )
@@ -17,14 +14,17 @@ func main() {
 	appHandlers := routers.AppHandlers(database)
 
 	server := &http.Server{
-		Addr:    fmt.Sprint(":%s", os.Getenv("SERVER_PORT")),
+		Addr: ":5000",
+		//Addr:    fmt.Sprint(":%s", os.Getenv("SERVER_PORT")),
 		Handler: appHandlers,
 	}
 
-	go func() {
-		if startAppErr := server.ListenAndServe(); startAppErr != nil {
-			log.Fatalf("Ошибка запуска сервера: %s", startAppErr)
-		}
-	}()
+	//go func() {
+	//	if startAppErr := server.ListenAndServe(); startAppErr != nil {
+	//		log.Fatalf("Ошибка запуска сервера: %s", startAppErr)
+	//	}
+	//}()
+
+	server.ListenAndServe()
 
 }

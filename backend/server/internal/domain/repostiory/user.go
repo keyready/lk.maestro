@@ -28,7 +28,7 @@ func (r *UserRepository) Login(loginRequest dto.LoginRequest) (httpCode int, err
 		loginRequest.Login,
 	)
 	if dbErr != nil {
-		return http.StatusInternalServerError, fmt.Errorf("Ошибка БД [/api/login]: %w", err.Error())
+		return http.StatusInternalServerError, fmt.Errorf("Ошибка БД [/api/auth/login]: %w", err.Error())
 	}
 	if userExist {
 		return http.StatusBadRequest, fmt.Errorf("Пользователь зарегистрирован")
@@ -42,7 +42,7 @@ func (r *UserRepository) Login(loginRequest dto.LoginRequest) (httpCode int, err
 		loginRequest.Password,
 	)
 	if dbErr != nil {
-		return http.StatusInternalServerError, fmt.Errorf("Ошибка БД [/api/login]: %w", err.Error())
+		return http.StatusInternalServerError, fmt.Errorf("Ошибка БД [/api/auth/login]: %w", err.Error())
 	}
 
 	log.Printf("Новый пользователь: %s", insertedId)
