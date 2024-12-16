@@ -111,7 +111,7 @@ export const LoginForm = (props: LoginFormProps) => {
                                 <Input
                                     isDisabled={isUserLoading}
                                     isInvalid={!!errors.username}
-                                    color={errors.username ? 'danger' : 'default'}
+                                    color={errors.username ? 'danger' : 'secondary'}
                                     errorMessage={errors.username?.message || ''}
                                     value={field.value}
                                     onChange={(value) => field.onChange(value)}

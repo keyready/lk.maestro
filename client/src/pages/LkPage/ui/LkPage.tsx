@@ -36,7 +36,7 @@ const LkPage = memo((props: LkPageProps) => {
                 Здесь Вы можете посмотреть материалы, которые были добавлены на ресурс
             </h2>
 
-            <HStack align="start" maxW className="mt-10">
+            <HStack gap="24px" align="start" maxW className="mt-10">
                 <VStack maxW>
                     <h3 className="text-l font-bold">Лекции, которые Вы добавили:</h3>
                     <LecturesList cutUnder={5} />

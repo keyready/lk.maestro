@@ -69,7 +69,7 @@ export const CreateLectureModal = (props: CreateLectureModalProps) => {
                             isDisabled={isLectureCreating}
                             value={lectureTitle}
                             onChange={(ev) => setLectureTitle(ev.target.value)}
-                            color="default"
+                            color="secondary"
                         />
                     </HStack>
                     <HStack maxW gap="12px">
@@ -84,7 +84,7 @@ export const CreateLectureModal = (props: CreateLectureModalProps) => {
                     <Button
                         isLoading={isLectureCreating}
                         className="mt-8 text-white font-bold self-end"
-                        onClick={handleAddLecture}
+                        onPress={handleAddLecture}
                     >
                         {isLectureCreating ? 'Ожидайте...' : 'Добавить лекцию!'}
                     </Button>

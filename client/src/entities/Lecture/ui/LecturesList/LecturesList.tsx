@@ -32,10 +32,10 @@ export const LecturesList = (props: LecturesListProps) => {
 
     if (!isLoading && !lectures?.length) {
         return (
-            <VStack maxW gap="0" className="mt-4">
+            <VStack maxW gap="0">
                 <h1 className="italic leading-none text-danger">Вы пока ничего не добавили</h1>
                 {cutUnder && (
-                    <p>
+                    <p className="mt-4">
                         Добавить лекции можно{' '}
                         <TextButton onClick={handleAllLecturesCLick}>здесь</TextButton>
                     </p>

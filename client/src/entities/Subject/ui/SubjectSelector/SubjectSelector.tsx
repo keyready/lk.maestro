@@ -1,14 +1,17 @@
 import { memo, useCallback, useState } from 'react';
 import {
     Button,
+    ButtonGroup,
     Dropdown,
     DropdownItem,
     DropdownMenu,
     DropdownTrigger,
     SharedSelection,
 } from '@nextui-org/react';
+import { RiArrowDownLine, RiCloseLine } from '@remixicon/react';
 
 import { Subject } from '../../model/types/Subject';
+import { useSubjects } from '../../api/SubjectApi';
 
 interface SubjectSelectorProps {
     className?: string;
@@ -18,20 +21,26 @@ interface SubjectSelectorProps {
 export const SubjectSelector = memo((props: SubjectSelectorProps) => {
     const { className, setSelectedSubjectId } = props;
 
-    // const { data: subjects, isLoading } = useSubjects();
+    const { data: subjects, isLoading } = useSubjects();
 
-    const subjects = [
-        { id: 1, title: 'АПР' },
-        { id: 2, title: 'ИО' },
-        { id: 3, title: 'РО' },
-        { id: 4, title: 'ПВ' },
-    ];
+    const [selectedSubject, setSelectedSubject] = useState<Subject>({
+        title: 'Выберите дисциплину...',
+        id: 0,
+    });
 
-    const [selectedSubject, setSelectedSubject] = useState<Subject>(subjects[0]);
+    const handleClearFilters = useCallback(() => {
+        setSelectedSubject({
+            title: 'Выберите дисциплину...',
+            id: 0,
+        });
+        setSelectedSubjectId(0);
+    }, [setSelectedSubjectId]);
 
     const handleChangeSelectedSubject = useCallback(
         (keys: SharedSelection) => {
-            const foundSubject = subjects.filter(
+            if (!subjects?.length) return;
+
+            const foundSubject = subjects?.filter(
                 (s) => s.id.toString() === keys.currentKey?.toString(),
             );
             if (foundSubject?.length) {
@@ -43,27 +52,30 @@ export const SubjectSelector = memo((props: SubjectSelectorProps) => {
     );
 
     return (
-        <Dropdown
-            classNames={{
-                trigger: `w-full ${className}`,
-            }}
-        >
-            <DropdownTrigger>
-                <Button variant="solid" className="text-white font-bold">
-                    {selectedSubject?.title}
-                </Button>
-            </DropdownTrigger>
-            <DropdownMenu
-                variant="flat"
-                selectionMode="single"
-                selectedKeys={[selectedSubject?.id.toString()]}
-                items={subjects}
-                onSelectionChange={handleChangeSelectedSubject}
-            >
-                {(subject) => (
-                    <DropdownItem key={subject.id.toString()}>{subject.title}</DropdownItem>
-                )}
-            </DropdownMenu>
-        </Dropdown>
+        <ButtonGroup>
+            <Button className="text-white min-w-32 justify-start">{selectedSubject?.title}</Button>
+            <Dropdown isDisabled={!subjects?.length}>
+                <DropdownTrigger>
+                    <Button isLoading={isLoading} isIconOnly variant="solid">
+                        <RiArrowDownLine size={18} color="white" />
+                    </Button>
+                </DropdownTrigger>
+                <DropdownMenu
+                    variant="flat"
+                    selectionMode="single"
+                    selectedKeys={[selectedSubject?.id.toString()]}
+                    items={subjects}
+                    onSelectionChange={handleChangeSelectedSubject}
+                    emptyContent="Не добавлено ни одной дисциплины"
+                >
+                    {(subject) => (
+                        <DropdownItem key={subject.id.toString()}>{subject.title}</DropdownItem>
+                    )}
+                </DropdownMenu>
+            </Dropdown>
+            <Button onPress={handleClearFilters} color="danger" isIconOnly>
+                <RiCloseLine />
+            </Button>
+        </ButtonGroup>
     );
 });

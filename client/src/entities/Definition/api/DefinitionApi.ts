@@ -4,9 +4,9 @@ import { rtkApi } from '@/shared/api/rtkApi';
 
 const DefinitionApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        getDefinition: build.query<Definition[], void>({
-            query: () => ({
-                url: `/api/sentence`,
+        getDefinition: build.query<Definition[], number | void>({
+            query: (subjectId) => ({
+                url: subjectId ? `/api/sentence/${subjectId}` : '/api/sentence',
             }),
         }),
     }),

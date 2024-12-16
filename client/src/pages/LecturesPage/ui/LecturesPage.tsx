@@ -48,7 +48,7 @@ const LecturesPage = memo((props: LecturesPageProps) => {
                 </HStack>
 
                 <Button
-                    onClick={() => setIsModalOpened(true)}
+                    onPress={() => setIsModalOpened(true)}
                     variant="shadow"
                     className="absolute bottom-8 right-8 w-16 h-16 !min-w-none rounded-full"
                 >

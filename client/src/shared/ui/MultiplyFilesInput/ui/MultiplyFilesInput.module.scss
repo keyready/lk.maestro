@@ -4,7 +4,8 @@
     border-radius: 12px;
 
     //background: #27272a;
-    background: #F4F4F5;
+    //background: #F4F4F5;
+    background:#E4D4F4;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,7 +14,9 @@
     flex: 1 0 auto;
 
     &:hover {
-        background: #E4E4E7;
+        background: #F2EAFA;
+
+        //background: #E4E4E7;
 
         //background: #3f3f46;
     }

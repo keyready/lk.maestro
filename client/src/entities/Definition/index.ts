@@ -8,4 +8,5 @@ export {
     getDefinitionError,
 } from './model/selectors/DefinitionSelectors';
 
+export { CreateDefinitionModal } from './ui/CreateDefinitionModal/CreateDefinitionModal';
 export { DefinitionsList } from './ui/DefinitionsList/DefinitionsList';

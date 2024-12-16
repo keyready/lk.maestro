@@ -27,7 +27,7 @@ export const PasswordInput = (props: PasswordInputProps) => {
             value={value}
             label={label}
             type={isPasswordVisible ? 'text' : 'password'}
-            color={isInvalid ? 'danger' : 'default'}
+            color={isInvalid ? 'danger' : 'secondary'}
             endContent={
                 <button
                     tabIndex={-1}

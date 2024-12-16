@@ -12,12 +12,13 @@ import { TextButton } from '@/shared/ui/TextButton';
 interface DefinitionsListProps {
     className?: string;
     cutUnder?: number;
+    subjectId?: number;
 }
 
 export const DefinitionsList = (props: DefinitionsListProps) => {
-    const { className, cutUnder } = props;
+    const { className, cutUnder, subjectId = 0 } = props;
 
-    const { isLoading, data: definitions } = useDefinitions();
+    const { isLoading, data: definitions } = useDefinitions(subjectId);
 
     const navigate = useNavigate();
 
