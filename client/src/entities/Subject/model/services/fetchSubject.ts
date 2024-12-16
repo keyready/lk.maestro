@@ -11,7 +11,7 @@ export const fetchSubject = createAsyncThunk<Subject, number, ThunkConfig<string
         const { extra, rejectWithValue } = thunkAPI;
 
         try {
-            const response = await extra.api.get<Subject>(`/api/subject/${subjectId}`);
+            const response = await extra.api.get<Subject>(`/api/subjects/${subjectId}`);
 
             if (!response.data) {
                 throw new Error();

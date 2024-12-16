@@ -1,5 +1,7 @@
 .Sidebar {
-    width: 80px;
+    width: 180px;
+    padding: 10px;
     background: var(--inverted-bg-color);
-    box-shadow: #3f3f46 0 10px 10px 0;
+    box-shadow: 12px 0 40px 0 #3f3f46;
+    z-index: 10;
 }

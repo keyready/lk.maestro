@@ -10,16 +10,18 @@ interface PasswordInputProps {
     onChange?: (value: string) => void;
     label?: string;
     isInvalid?: boolean;
+    isDisabled?: boolean;
     errorMessage?: string;
 }
 
 export const PasswordInput = (props: PasswordInputProps) => {
-    const { className, label, errorMessage, isInvalid, value, onChange } = props;
+    const { className, label, isDisabled, errorMessage, isInvalid, value, onChange } = props;
 
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
     return (
         <Input
+            isDisabled={isDisabled}
             isInvalid={isInvalid}
             errorMessage={errorMessage}
             value={value}

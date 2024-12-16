@@ -9,8 +9,8 @@ import { AppRouter } from '@/app/providers/AppRouter';
 import { Toaster } from '@/widgets/Toaster';
 import { Sidebar } from '@/widgets/Sidebar';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
-import { getUserData, getUserDataService } from '@/entities/User';
-import { USER_ACCESS_TOKEN } from '@/shared/const';
+import { getUserData, UserActions } from '@/entities/User';
+import { USER_ACCESS } from '@/shared/const';
 
 export const App = () => {
     const { theme } = useTheme();
@@ -21,9 +21,9 @@ export const App = () => {
     const userData = useSelector(getUserData);
 
     useEffect(() => {
-        const token = localStorage.getItem(USER_ACCESS_TOKEN);
-        if (token) {
-            dispatch(getUserDataService());
+        const userLS = localStorage.getItem(USER_ACCESS);
+        if (userLS) {
+            dispatch(UserActions.setUserData(JSON.parse(userLS)));
         }
     }, [dispatch]);
 
@@ -33,6 +33,7 @@ export const App = () => {
                 <Suspense fallback="">
                     <div className="flex w-full">
                         {userData && <Sidebar />}
+                        {/* <Sidebar /> */}
                         <AppRouter />
                     </div>
                     <Toaster />

@@ -17,7 +17,7 @@ export const createLecture = createAsyncThunk<string, CreateLectureProps, ThunkC
         const formData = new FormData();
         formData.append('title', lecture.title);
         formData.append('subjectId', lecture.subjectId.toString());
-        lecture.files.map((file) => {
+        lecture.files.forEach((file) => {
             formData.append('file', file);
         });
 

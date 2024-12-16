@@ -2,11 +2,13 @@
     width: 100%;
     height: 100vh;
     padding: 60px 80px;
+    background: url(/static/main-bg.webp) no-repeat;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: start;
     gap: 10px;
+    background-size: cover;
     position: relative;
     overflow-y: auto;
 }

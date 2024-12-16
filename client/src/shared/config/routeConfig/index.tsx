@@ -2,7 +2,6 @@ import { RouteProps } from 'react-router-dom';
 
 import { MainPage } from '@/pages/MainPage';
 import { NotFound } from '@/pages/NotFound';
-import { UserRoles } from '@/entities/User';
 import { AuthPage } from '@/pages/AuthPage';
 import { LkPage } from '@/pages/LkPage';
 import { LecturesPage } from '@/pages/LecturesPage';
@@ -10,7 +9,6 @@ import { DefinitionsPage } from '@/pages/DefinitionsPage';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
-    roles?: UserRoles[];
 };
 
 export enum AppRoutes {
@@ -40,22 +38,22 @@ export const routerConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
         element: <MainPage />,
-        // authOnly: true,
+        authOnly: true,
     },
     [AppRoutes.LK]: {
         path: RoutePath.lk,
         element: <LkPage />,
-        // authOnly: true,
+        authOnly: true,
     },
     [AppRoutes.LECTURES]: {
         path: RoutePath.lectures,
         element: <LecturesPage />,
-        // authOnly: true,
+        authOnly: true,
     },
     [AppRoutes.DEFINITIONS]: {
         path: RoutePath.definitions,
         element: <DefinitionsPage />,
-        // authOnly: true,
+        authOnly: true,
     },
 
     [AppRoutes.AUTH]: {
